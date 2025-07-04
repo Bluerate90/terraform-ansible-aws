@@ -1,0 +1,44 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.backup
+
+# SSH Keys (Security)
+*.pem
+*.key
+id_rsa*
+royal-hotel-key*
+
+# Ansible files
+*.retry
+.ansible/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local environment files
+.env
+.env.local
