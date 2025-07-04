@@ -28,18 +28,18 @@ This project demonstrates **Infrastructure as Code (IaC)** by automating the pro
 
 ```
 terraform-ansible-aws/
-├── README.md
+├── README.md              # Professional project documentation
+├── .gitignore            # Security and cleanup
 ├── terraform/
-│   ├── main.tf              # Main infrastructure code
-│   ├── variables.tf         # Input variables
-│   └── outputs.tf           # Output values
+│   ├── main.tf           # Core infrastructure code
+│   ├── variables.tf      # Configuration variables
+│   ├── outputs.tf        # Important outputs
+│   └── inventory.tpl     # Ansible inventory template
 ├── ansible/
-│   ├── playbook.yml         # Configuration playbook
-│   ├── inventory.ini        # Server inventory
-│   └── ansible.cfg          # Ansible configuration
-├── scripts/
-│   └── deploy.sh           # Deployment automation
-└── .gitignore
+│   ├── playbook.yml      # Server configuration
+│   └── ansible.cfg       # Ansible settings
+└── scripts/
+    └── deploy.sh         # One-click deployment
 ```
 
 ## ⚡ Quick Start
