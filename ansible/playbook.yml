@@ -1,0 +1,90 @@
+---
+- name: Configure Royal Hotel Development Server
+  hosts: webserver
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Update all packages
+      yum:
+        name: '*'
+        state: latest
+        update_cache: true
+
+    - name: Install Python 3
+      yum:
+        name: python3
+        state: present
+
+    - name: Install Maven
+      yum:
+        name: maven
+        state: present
+
+    - name: Install additional development tools
+      yum:
+        name:
+          - git
+          - java-1.8.0-openjdk
+          - java-1.8.0-openjdk-devel
+          - wget
+          - curl
+          - vim
+        state: present
+
+    - name: Create application directory
+      file:
+        path: /opt/royal-hotel
+        state: directory
+        mode: '0755'
+        owner: ec2-user
+        group: ec2-user
+
+    - name: Create configuration marker file
+      file:
+        path: /tmp/ansible-configured.txt
+        state: touch
+        mode: '0644'
+        owner: ec2-user
+        group: ec2-user
+
+    - name: Create project info file
+      copy:
+        content: |
+          Royal Hotel Development Server
+          =============================
+          Configured by: Ansible
+          Date: {{ ansible_date_time.date }}
+          
+          Installed Software:
+          - Python 3
+          - Java 8 (OpenJDK)
+          - Maven
+          - Git
+          - Development tools
+          
+          Server Details:
+          - Hostname: {{ ansible_hostname }}
+          - IP Address: {{ ansible_default_ipv4.address }}
+          - OS: {{ ansible_distribution }} {{ ansible_distribution_version }}
+        dest: /opt/royal-hotel/server-info.txt
+        mode: '0644'
+        owner: ec2-user
+        group: ec2-user
+
+    - name: Display setup completion message
+      debug:
+        msg: |
+          =================================
+          Royal Hotel Server Setup Complete
+          =================================
+          Server IP: {{ ansible_default_ipv4.address }}
+          SSH Access: ssh -i royal-hotel-key.pem ec2-user@{{ ansible_default_ipv4.address }}
+          
+          Installed:
+          ✓ Python 3
+          ✓ Java 8 + Maven
+          ✓ Git and development tools
+          ✓ Project directory: /opt/royal-hotel
+          
+          Server is ready for development work!
