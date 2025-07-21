@@ -154,7 +154,7 @@ This project demonstrates:
 
 ## 📞 Contact
 
-**Your Name** - DevOps Engineer  
+Tibyan - DevOps Engineer  
 📧 tib9051@gmail.com  
 🔗 [LinkedIn](https://linkedin.com/in/tibyan-hussien-1889339a)  
 🐙 [GitHub](https://github.com/Bluerate90)
